@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>itemone</title>
+        <script type="module">
+            import { initializeApp } from 'firebase/app';
+
+            const firebaseConfig = {   
+                apiKey: "AIzaSyD1XtO4qPgOf39nf7xLjwF6tcbMN0tWk5A",
+                authDomain: "theitembanc.firebaseapp.com",
+                projectId: "theitembanc",
+                storageBucket: "theitembanc.appspot.com",
+                messagingSenderId: "380257186858",
+                appId: "1:380257186858:web:189fd5b63ec298c8503f53",
+                measurementId: "G-217LL0EQH1"  
+            };
+
+            const app = initializeApp(firebaseConfig);
+        </script>      
+    </head>
+    <body>
+        <h1>Welcome to the Item Banc!</h1>
+        
+        <img src="logoblue.gif" alt="" width="300" height="300">
+        <br>
+        <p>Enter the following information for your inventory ITEM</p>
+        <p>Phantom Solana Wallet Extension with .007 SOL Required</p>
+        <label for="itemName">What is your item? Enter the most common name for it:</label>
+        <input type="text" id="itemName" name="itemName"> <br>
+
+        <label for="itemLocation">Where is your item? Enter the city:</label>
+        <input type="text" id="itemLocation" name="itemLocation"> <br>
+
+        <label for="itemPrice">What is the item price? Enter with currency symbol:</label>
+        <input type="text" id="itemPrice" name="itemPrice"> <br>
+
+        <button onclick="displayInfo()">Submit</button> <br>
+
+        <div id="itemNameDisplay"></div>
+        <div id="itemLocationDisplay"></div>
+        <div id="itemPriceDisplay"></div>
+
+        <div id="noPhantomWallet"></div>
+
+        
+        <button id="nextButton" onclick="goToNext()" >Next</button>
+
+        <script src="itemone.js"></script>   
+        
+        <script>
+          
+
+            function goToNext() {
+                //get the values entered by the user
+                const itemName = document.getElementById('itemName').value;
+                const itemLocation = document.getElementById('itemLocation').value;
+                const itemPrice = document.getElementById('itemPrice').value;
+
+                //Redirect to the next page, passing the values as URL params
+                
+               
+                window.location.href = "itemtwo.html?itemName="+itemName+"&itemLocation="+itemLocation+"&itemPrice="+itemPrice+"";
+           
+            }
+
+        </script>
+ 
+    </body>
+    </html>
