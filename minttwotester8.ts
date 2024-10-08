@@ -352,7 +352,7 @@ const initializeMintIx= createInitializeMintInstruction(
         wait100000Seconds();
         wait100000Seconds();
        
-        const message3= "Please Wait JUST a Minute then sign";
+        const message3= "Please Wait JUST a Minute...at least 30 real seconds! ...then sign";
         const encodeMessage3= new TextEncoder().encode(message3);
         const {signature3}= await window.solana.signMessage(encodeMessage3, 'utf8');
         console.log('message minute signed ');
@@ -363,6 +363,11 @@ const initializeMintIx= createInitializeMintInstruction(
         throw new Error ('Transaction has changed since signing');
         }
 
+        const message4= "If a Minted code does not show soon after signing this message, then refresh screen and try again, SLOWER, ok?";
+        const encodeMessage4= new TextEncoder().encode(message4);
+        const {signature4}= await window.solana.signMessage(encodeMessage4, 'utf8');
+        console.log('if no mint try again');
+   
        
        
         console.log('token mint signed too', sig2)
@@ -385,7 +390,7 @@ const initializeMintIx= createInitializeMintInstruction(
         wait100000Seconds();
         wait100000Seconds();
        
-        
+        console.log ('sending sig');
         const txsignature2 = await connection.sendRawTransaction(serializedTransaction2);
         
         wait100000Seconds();
@@ -404,12 +409,12 @@ const initializeMintIx= createInitializeMintInstruction(
         wait100000Seconds();
         wait100000Seconds();
 
-        console.log('raw sig', txsignature2);
+       
        
         try{
             
             if (txsignature2) {
-                
+                console.log('raw sig', txsignature2);
                 console.log("Minted ", mint.publicKey.toBase58());
                 const itemMinted = document.getElementById('itemMinted');
                 itemMinted.textContent = 
